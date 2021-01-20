@@ -76,7 +76,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
-      "eslint -c .eslintrc.js --ext .ts,.tsx,.js src"
+      "eslint --config .eslintrc.js"
     ],
     "*.{css,less,scss}": [
       "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}"
