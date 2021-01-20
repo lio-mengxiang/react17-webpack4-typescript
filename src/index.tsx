@@ -2,7 +2,7 @@ import * as React from "react"
 import ReactDOM from "react-dom"
 
 export interface Props {
-  name: string
+  name: string;
   enthusiasmLevel?: number
 }
 

@@ -13,7 +13,16 @@ module.exports = {
 
   plugins: [
     "dva-hmr",
-    "@babel/plugin-transform-runtime",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        corejs: {
+          version: 3,
+          proposals: true,
+        },
+        useESModules: true,
+      },
+    ],
     ["@babel/plugin-proposal-decorators", { legacy: true }],
     "@babel/plugin-proposal-class-properties",
     ["babel-plugin-import", { libraryName: "antd", style: true }],

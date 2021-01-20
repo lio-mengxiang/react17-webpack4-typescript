@@ -1,16 +1,27 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成html的插件
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css插件
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin'); // 提升构建速度
-const TerserPlugin = require('terser-webpack-plugin'); // 压缩代码
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin") // 生成html的插件
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin") // 压缩css插件
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 提升构建速度
+const TerserPlugin = require("terser-webpack-plugin") // 压缩代码
 // const CopyWebpackPlugin = require('copy-webpack-plugin'); // 复制文件
-const ProgressBarPlugin = require('progress-bar-webpack-plugin'); // 让控制台显示打包进度
+const ProgressBarPlugin = require("progress-bar-webpack-plugin") // 让控制台显示打包进度
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const webpack = require('webpack');
+const webpack = require("webpack")
 const {
-  NODE_ENV, INDEX_PATH, BUILD_PATH, IS_PRODUCTION, IS_DEVELOPMENT, SRC_PATH, isEnvProduction,
-  LESS_REGEXP, IMG_REGEXP, NODE_MODULES_REGEXP, getResolveAppPath, getStyleLoaders, IOCAL_IDENTNAME
- } = require('./config');
+  NODE_ENV,
+  INDEX_PATH,
+  BUILD_PATH,
+  IS_PRODUCTION,
+  IS_DEVELOPMENT,
+  SRC_PATH,
+  isEnvProduction,
+  LESS_REGEXP,
+  IMG_REGEXP,
+  NODE_MODULES_REGEXP,
+  getResolveAppPath,
+  getStyleLoaders,
+  IOCAL_IDENTNAME,
+} = require("./config")
 
 module.exports = {
   mode: NODE_ENV,
@@ -22,18 +33,18 @@ module.exports = {
   output: {
     path: getResolveAppPath(BUILD_PATH),
     // 开发模式下,不进行多余操作
-    filename: IS_PRODUCTION ? '[name].[chunkhash:8].js' :  IS_DEVELOPMENT && '[name].js',
-    chunkFilename: IS_PRODUCTION ? '[name].[chunkhash:8].chunk.js' : IS_DEVELOPMENT && '[name].chunk.js',
+    filename: IS_PRODUCTION ? "[name].[chunkhash:8].js" : IS_DEVELOPMENT && "[name].js",
+    chunkFilename: IS_PRODUCTION ? "[name].[chunkhash:8].chunk.js" : IS_DEVELOPMENT && "[name].chunk.js",
   },
 
   // 让控制台不显示全部构建信息，有错误时才显示
-  stats: 'errors-only',
+  stats: "errors-only",
 
   resolve: {
     alias: {
-      '@': getResolveAppPath(SRC_PATH),
+      "@": getResolveAppPath(SRC_PATH),
     },
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
 
   module: {
@@ -42,9 +53,9 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         include: getResolveAppPath(SRC_PATH),
         use: [
-          'thread-loader',
+          "thread-loader",
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
               // 缓存 loader 的执行结果
               cacheDirectory: true,
@@ -62,7 +73,7 @@ module.exports = {
             modules: IOCAL_IDENTNAME,
           },
           {
-            loader: 'less-loader',
+            loader: "less-loader",
             options: {
               lessOptions: {
                 javascriptEnabled: true,
@@ -103,10 +114,10 @@ module.exports = {
         exclude: NODE_MODULES_REGEXP,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
-              outputPath: 'images', // 指定图片路径
-              name: '[name].[contenthash:8].[ext]',
+              outputPath: "images", // 指定图片路径
+              name: "[name].[contenthash:8].[ext]",
               limit: 1024,
             },
           },
@@ -131,28 +142,28 @@ module.exports = {
       // 压缩css插件
       new OptimizeCSSAssetsPlugin({
         cssProcessorPluginOptions: {
-          preset: ['default', { minifyFontValues: { removeQuotes: false } }],
+          preset: ["default", { minifyFontValues: { removeQuotes: false } }],
         },
       }),
     ],
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       cacheGroups: {
         reactBase: {
-          name: 'reactBase',
-          chunks: 'all',
+          name: "reactBase",
+          chunks: "all",
           test: /[\\/]node_modules[\\/](react|react-dom|@hot-loader|react-router|react-redux|react-router-dom)[\\/]/,
         },
-        'async-commons': {
+        "async-commons": {
           // 异步加载公共包、组件等
-          name: 'async-commons',
-          chunks: 'async',
+          name: "async-commons",
+          chunks: "async",
           test: /[\\/]node_modules[\\/]/,
           minChunks: 2,
           priority: 1,
         },
         default: {
-          name: 'default',
+          name: "default",
           priority: -20,
         },
       },
@@ -161,7 +172,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: getResolveAppPath(SRC_PATH, './index.html'),
+      template: getResolveAppPath(SRC_PATH, "./index.html"),
       // colorLessPath: isEnvProduction ? '/workwechat/' : '/',
     }),
 
@@ -194,5 +205,4 @@ module.exports = {
     //   PROJECT_ENV: JSON.stringify(PROJECT_ENV),
     // }),
   ],
-};
-
+}

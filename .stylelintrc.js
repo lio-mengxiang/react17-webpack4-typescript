@@ -1,13 +1,13 @@
 module.exports = {
-  extends: ['stylelint-config-standard'],
-  plugins: ['stylelint-declaration-block-no-ignored-properties'],
+  extends: ["stylelint-config-standard"],
+  plugins: ["stylelint-declaration-block-no-ignored-properties"],
   rules: {
-    'comment-empty-line-before': null,
-    'declaration-empty-line-before': null,
-    'function-name-case': 'lower',
-    'no-descending-specificity': null,
-    'no-invalid-double-slash-comments': null,
-    'rule-empty-line-before': 'always',
+    "comment-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "function-name-case": "lower",
+    "no-descending-specificity": null,
+    "no-invalid-double-slash-comments": null,
+    "rule-empty-line-before": "always",
   },
-  ignoreFiles: ['node_modules/**/*', 'build/**/*'],
+  ignoreFiles: ["node_modules/**/*", "build/**/*"],
 }

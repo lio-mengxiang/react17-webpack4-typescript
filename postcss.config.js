@@ -1,14 +1,14 @@
 /* eslint-disable global-require */
 module.exports = {
   plugins: [
-    require('postcss-flexbugs-fixes'),
-    require('postcss-preset-env')({
+    require("postcss-flexbugs-fixes"),
+    require("postcss-preset-env")({
       autoprefixer: {
         grid: true,
-        flexbox: 'no-2009'
+        flexbox: "no-2009",
       },
       stage: 3,
     }),
-    require('postcss-normalize'),
-  ]
+    require("postcss-normalize"),
+  ],
 }

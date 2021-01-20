@@ -1,8 +1,8 @@
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const OpenBrowserPlugin = require("open-browser-webpack-plugin")
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.base.config.js');
-const { HOST, PORT, API_URL } = require('./config');
+const { merge } = require("webpack-merge")
+const common = require("./webpack.base.config.js")
+const { HOST, PORT, API_URL } = require("./config")
 
 module.exports = merge(common, {
   devServer: {
@@ -33,7 +33,7 @@ module.exports = merge(common, {
   //   ...LOCAL_CONFIG.output,
   // },
 
-  devtool: 'cheap-module-source-map',
+  devtool: "cheap-module-source-map",
 
   plugins: [
     new OpenBrowserPlugin({ url: API_URL }),
@@ -46,4 +46,4 @@ module.exports = merge(common, {
     //   ],
     // }),
   ],
-});
+})
