@@ -1,0 +1,16 @@
+
+# macos
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# dependencies
+./node_modules
+
+# production
+/dist
+
+/coverage
+.idea
+yarn-error.log
+node_modules
