@@ -21,8 +21,6 @@ class Hello extends React.Component<Props, State> {
     this.updateEnthusiasm(currentEnthusiasm + 1)
   }
 
-  // onDecrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm - 1);
-
   updateEnthusiasm(currentEnthusiasm: number) {
     this.setState({ currentEnthusiasm })
   }
