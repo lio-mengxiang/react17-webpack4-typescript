@@ -22,9 +22,9 @@ class Config {
     this.IS_PRODUCTION = this.NODE_ENV === "production"
     this.IS_ANALYZE = process.env.ANALYZE === "true"
   }
-  getResolveAppPath = (pathStr, ...otherPath) => {
-    return path.resolve(process.cwd(), pathStr, ...otherPath)
-  }
+
+  getResolveAppPath = (pathStr, ...otherPath) => path.resolve(__dirname, "../", pathStr, ...otherPath)
+
   getStyleLoaders = (cssOptions, ...preProcessors) => {
     const ret = []
     if (this.IS_DEVELOPMENT) {

@@ -1,4 +1,3 @@
-const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin") // 生成html的插件
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin") // 压缩css插件
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin") // 提升构建速度
